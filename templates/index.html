@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Get Fit</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="../static/img/favicon.png" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../static/css/styles.css">
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu:400italic,700,500,500italic,700italic,400' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html"><span class="fa fa-bolt fa-lg"></span> Get Fit</a>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<form class="navbar-form" role="search">
+						<div class="form-group">
+							<input type="text" class="form-control text-right" placeholder="Enter query and hit search!" name="query" id="search-form-query">
+						</div>
+						<button type="submit" class="btn btn-search"><span class="fa fa-search fa-lg"></span> Search</button>
+					</form>
+				</li>
+
+				<li><a href="shop.html"><span class="fa fa-compass fa-lg"></span> Explore</a></li>
+
+
+				<li><a href="#">Apparels</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Action</a></li>
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">Separated link</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">One more separated link</a></li>
+					</ul>
+				</li>
+
+				<li><a href="#">Supplements</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Action</a></li>
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">Separated link</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">One more separated link</a></li>
+					</ul>
+				</li>
+
+				<li><a href="#">Instruments</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Action</a></li>
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">Separated link</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">One more separated link</a></li>
+					</ul>
+				</li>
+
+
+				<!-- All the categories go before this line -->
+				<li><a href="popular.html"><span class="fa fa-star fa-lg"></span> Popular</a></li>
+				<li><a href="cart.html"><span class="fa fa-shopping-cart fa-lg"></span> Cart</a></li>
+				{% if request.session.username %}
+				<li><a href="/profile?username={{ request.session.username }}"><span class="fa fa-user fa-lg"></span> {{ request.session.username }}</a></li>
+				<li><a href="/signout"><span class="fa fa-user fa-lg"></span> Sign out</a></li>
+				{% else %}
+				<li><a href="/enter"><span class="fa fa-user fa-lg"></span> Enter</a></li>
+				{% endif %}
+			</ul>
+		</div>
+	</nav>
+
+	<div class="row">
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+			</ol>
+
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+				<div class="item active">
+					<img class="img-responsive" src="../static/img/bg1.jpg" alt="Chania">
+					<div class="carousel-caption">
+						<h2><a href="enter.html"><span class="fa fa-user"></span> Join us!</a></h2>
+						<h4>Join the best market place for fitness industry.</h4>
+					</div>
+				</div>
+
+				<div class="item">
+					<img class="img-responsive" src="../static/img/bg2.jpg" alt="Chania">
+					<div class="carousel-caption">
+						<h2><a href="shop.html"><span class="fa fa-compass"></span> Explore!</a></h2>
+						<h4>Find the best products at the best price.</h4>
+					</div>
+				</div>
+
+				<div class="item">
+					<img class="img-responsive" src="../static/img/bg3.jpg" alt="Flower">
+					<div class="carousel-caption">
+						<h2><a href="popular.html"><span class="fa fa-star"></span> Popular!</a></h2>
+						<h4>See what others are buying.</h4>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- Left and right controls -->
+			<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+	</div>
+
+	<div class="row text-center why">
+		<h2 class="why-header">
+			Why from us?
+		</h2>
+		<div class="row why-content">
+			<div class="col-md-4">
+				<span class="fa fa-thumbs-up fa-2x"></span></br>
+				<h4>Best quality</h4>
+			</div>
+			<div class="col-md-4">
+				<span class="fa fa-rocket fa-2x"></span></br>
+				<h4>Fast delivery</h4>
+			</div>
+			<div class="col-md-4">
+				<span class="fa fa-dollar fa-2x"></span></br>
+				<h4>Save money</h4>
+			</div>
+		</div>
+	</div>
+
+	<div class="row footer text-center">
+		<p>
+			&copy; Anindya Sundar Paul and Zahin Jawad
+		</p>
+
+		<p class="social-menu">
+			<span class="fa fa-facebook fa-lg"></span>
+			<span class="fa fa-twitter fa-lg"></span>
+			<span class="fa fa-google-plus fa-lg"></span>
+			<span class="fa fa-instagram fa-lg"></span>
+			<span class="fa fa-snapchat-ghost fa-lg"></span>
+		</p>
+	</div>
+
+
+</body>
+
+</html>

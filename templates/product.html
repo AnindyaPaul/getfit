@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Get Fit</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="../static/img/favicon.png" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../static/css/styles.css">
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu:400italic,700,500,500italic,700italic,400' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html"><span class="fa fa-bolt fa-lg"></span> Get Fit</a>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<form class="navbar-form" role="search">
+						<div class="form-group">
+							<input type="text" class="form-control text-right" placeholder="Enter query and hit search!" name="query" id="search-form-query">
+						</div>
+						<button type="submit" class="btn btn-search"><span class="fa fa-search fa-lg"></span> Search</button>
+					</form>
+				</li>
+
+				<li><a href="shop.html"><span class="fa fa-compass fa-lg"></span> Explore</a></li>
+
+				<li><a href="#">Apparels</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Action</a></li>
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">Separated link</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">One more separated link</a></li>
+					</ul>
+				</li>
+
+				<li class="active"><a href="#">Supplements</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Action</a></li>
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">Separated link</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">One more separated link</a></li>
+					</ul>
+				</li>
+
+				<li><a href="#">Instruments</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Action</a></li>
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">Separated link</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">One more separated link</a></li>
+					</ul>
+				</li>
+
+
+				<!-- All the categories go before this line -->
+				<li><a href="popular.html"><span class="fa fa-star fa-lg"></span> Popular</a></li>
+				<li><a href="cart.html"><span class="fa fa-shopping-cart fa-lg"></span> Cart</a></li>
+				<li><a href="enter.html"><span class="fa fa-user fa-lg"></span> Enter</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container">
+
+		<div class="col-md-8 col-md-offset-2">
+			<div class="well">
+				<div class="row">
+					<div class="col-md-5">
+						<img class="img-responsive" src="../static/img/product.jpg">
+					</div>
+					<div class="col-md-7">
+						<div class="row prod-header">
+							<div class="col-md-8">
+								<h3>Pre JYM</h3>
+								<h4 style="color: red">Price: $19.99</h4>
+							</div>
+							<div class="col-md-4 text-right rating">
+								<h3>9.2</h3>
+								<p>Rating</p>
+							</div>
+						</div>
+						<p class="text-justify">Pre-Workout Powder Powerhouse. Scientifically Advanced All-In-One Formula for Improved Workouts Pre-Workout Powder Powerhouse. Scientifically Advanced All-In-One Formula for Improved Workouts</p>
+
+						<div class="row qty-form">
+							<form>
+								<div class="col-xs-6">
+									<input type="number" class="form-control qty-form-qty" step="1" min="0" placeholder="Quantity">
+								</div>
+								<div class="col-xs-6 text-right">
+									<button type="submit" class="btn btn-cart qty-form-btn">Add to cart</button>
+								</div>
+							</form>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="well">
+				<div class="row">
+					<form class="form-horizontal" id="review-form">
+						<div class="form-group">
+							<label for="input-rating" class="col-sm-2 control-label">Rating</label>
+							<div class="col-sm-10">
+								<input type="number" step="1" min="0" max="10" class="form-control" id="input-rating" placeholder="Rate the product from 0 to 10" name="rating">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="input-review" class="col-sm-2 control-label">Review</label>
+							<div class="col-sm-10">
+								<textarea rows="3" class="form-control" id="input-review" placeholder="Write a review about the product" form="review-form" name="review"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-default">Submit</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<a name="reviews"></a>
+			<div class="well" id="reviews-header">
+				<h4 class="text-center">Reviews</h4>
+			</div>
+
+			<div class="well">
+				<div class="row">
+					<div class="col-md-2">
+						<div class="row">
+							<img class="img-responsive img-circle" src="../static/img/user1.jpg">
+						</div>
+						<div class="row">
+							<h4 class="text-center">Anindya Paul</h4>
+						</div>
+					</div>
+					<div class="col-md-10">
+						<h4>Rated: 9 <span class="rating">(out of 10)</span></h4>
+						<p class="text-justify">Love this stuff, it provides a great energy and focus boost. quick word of warning don't take 6 hours before bed it will keep you awake, ideal for morning workouts though and does exactly what it says on the tub.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="well">
+				<div class="row">
+					<div class="col-md-2">
+						<div class="row">
+							<img class="img-responsive img-circle" src="../static/img/user2.jpg">
+						</div>
+						<div class="row">
+							<h4 class="text-center">Zahin Jawad</h4>
+						</div>
+					</div>
+					<div class="col-md-10">
+						<h4>Rated: 9 <span class="rating">(out of 10)</span></h4>
+						<p class="text-justify">The perfect blend of ingredients at the proper doses. It does everything I want a pre-workout to do, and the ingredient list is completely disclosed. I won't even buy a proprietary blend if it was half off anymore.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+	</div>
+
+	<div class="row footer text-center">
+		<p>
+			&copy; Anindya Sundar Paul and Zahin Jawad
+		</p>
+
+		<p class="social-menu">
+			<span class="fa fa-facebook fa-lg"></span>
+			<span class="fa fa-twitter fa-lg"></span>
+			<span class="fa fa-google-plus fa-lg"></span>
+			<span class="fa fa-instagram fa-lg"></span>
+			<span class="fa fa-snapchat-ghost fa-lg"></span>
+		</p>
+	</div>
+
+
+</body>
+
+</html>
