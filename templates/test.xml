@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<django-objects version="1.0">
+	<object model="dataaccess.userprofile" pk="anindyapaul">
+		<field name="email" type="CharField">aspaul.93@gmail.com</field>
+		<field name="password" type="CharField">pbkdf2_sha256$24000$RnF0MoH1bgEW$Ie4BjQ2/4yMM4a2W6UR+ZdnUPFQ1dgmqkTIfun6XlHY=</field>
+		<field name="picture" type="FileField"></field>
+		<field name="code" type="CharField">22468655</field>
+		<field name="verified" type="IntegerField">1</field>
+	</object>
+	<object model="dataaccess.userprofile" pk="zahinjawad">
+		<field name="email" type="CharField">zahin@gmail.com</field>
+		<field name="password" type="CharField">testpass</field>
+		<field name="picture" type="FileField"></field>
+		<field name="code" type="CharField">123456</field>
+		<field name="verified" type="IntegerField">1</field>
+	</object>
+</django-objects>

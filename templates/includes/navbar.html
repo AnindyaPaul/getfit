@@ -1,0 +1,73 @@
+<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/"><span class="fa fa-bolt fa-lg"></span> Get Fit</a>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<form class="navbar-form" role="search" method="post" action="/search/"> {% csrf_token %}
+						<div class="form-group">
+							<input type="text" class="form-control text-right" placeholder="Enter query and hit search!" name="query" id="search-form-query">
+						</div>
+						<button type="submit" class="btn btn-search"><span class="fa fa-search fa-lg"></span> Search</button>
+					</form>
+				</li>
+
+				<li><a href="/shop"><span class="fa fa-compass fa-lg"></span> Explore</a></li>
+
+
+				<li><a href="#">Apparels</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Action</a></li>
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">Separated link</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">One more separated link</a></li>
+					</ul>
+				</li>
+
+				<li><a href="#">Supplements</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Action</a></li>
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">Separated link</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">One more separated link</a></li>
+					</ul>
+				</li>
+
+				<li><a href="#">Instruments</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Action</a></li>
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">Separated link</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">One more separated link</a></li>
+					</ul>
+				</li>
+
+
+				<!-- All the categories go before this line -->
+				<li><a href="/popular"><span class="fa fa-star fa-lg"></span> Popular</a></li>
+				<li><a href="/cart"><span class="fa fa-shopping-cart fa-lg"></span> Cart</a></li>
+				{% if request.session.username %}
+				<li><a href="/profile"><span class="fa fa-user fa-lg"></span> {{ request.session.username }}</a></li>
+				<li><a href="/signout"><span class="fa fa-user fa-lg"></span> Sign out</a></li>
+				{% else %}
+				<li><a href="/enter"><span class="fa fa-user fa-lg"></span> Enter</a></li>
+				{% endif %}
+			</ul>
+		</div>
+	</nav>
