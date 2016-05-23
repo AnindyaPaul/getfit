@@ -21,23 +21,24 @@
 		</div>
 
 		<div class="row product-row">
+			{% for product in products %}
 			<div class="col-md-3">
-				<a href="product.html">
+				<a href="/product?productid={{ product.productid }}">
 					<div class="thumbnail">
-						<img class="img-responsive" src="../static/img/product.jpg">
+						<img class="img-responsive" src="../media/{{ product.image }}">
 						<div class="caption">
-							<h3>Pre JYM</h3>
-							<h4>Price: <span style="color: red">$19.99</span> <s>$29.99</s></h4>
-							<p class="prod-sum">Pre-Workout Powder Powerhouse*. Scientifically Advanced All-In-One Formula for Improved Workouts*</p>
+							<h3>{{ product.name }}</h3>
+							<h4>Price: <span style="color: red">${{ product.discprice | floatformat:2 }}</span> <s>${{ product.origprice | floatformat:2}}</s></h4>
+							<p class="prod-sum">{{ product.details }}</p>
 							<p>
-								<a href="/product/#reviews" class="btn btn-default rating-btn" role="button">9.2/10</a>
+								<a href="/product?productid={{ product.productid }}#reviews" class="btn btn-default rating-btn" role="button">9.2/10</a>
 								<a href="#" class="btn btn-cart shop-prod-btn" role="button"><span class="fa fa-cart-plus"></span> Add to cart</a>
 							</p>
 						</div>
 					</div>
 				</a>
 			</div>
-
+			{% endfor %}
 		</div>
 	</div>
 

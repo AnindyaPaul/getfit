@@ -16,22 +16,28 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from logic import views
+import getfit
+from accounts import views as accviews
+from shop import views as shopviews
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$',views.index,name='index'),
-    url(r'^enter/',views.enter,name='enter'),
-    url(r'^signin/',views.signin,name='signin'),
-    url(r'^signup/',views.signup,name='signup'),
-    url(r'^signout/',views.signout,name='signout'),
-    url(r'^verify/',views.verify,name='verify'),
-    url(r'^forgot/',views.forgot,name='forgot'),
-    url(r'^pwdreset/',views.pwdreset,name='pwdreset'),
-    url(r'^storepwd/',views.storepwd,name='storepwd'),
+    url(r'^$', getfit.views.index,name='index'),
     
-    url(r'^profile/',views.profile,name='profile'),
-    url(r'^updprofile/',views.updprofile,name='updprofile'),
-    url(r'^updprofilepic/',views.updprofilepic,name='updprofilepic'),
-    url(r'^delprofilepic/',views.delprofilepic,name='delprofilepic'),
+    url(r'^enter/',accviews.enter,name='enter'),
+    url(r'^signin/',accviews.signin,name='signin'),
+    url(r'^signup/',accviews.signup,name='signup'),
+    url(r'^signout/',accviews.signout,name='signout'),
+    url(r'^verify/',accviews.verify,name='verify'),
+    url(r'^forgot/',accviews.forgot,name='forgot'),
+    url(r'^pwdreset/',accviews.pwdreset,name='pwdreset'),
+    url(r'^storepwd/',accviews.storepwd,name='storepwd'),
+    
+    url(r'^profile/',accviews.profile,name='profile'),
+    url(r'^updprofile/',accviews.updprofile,name='updprofile'),
+    url(r'^updprofilepic/',accviews.updprofilepic,name='updprofilepic'),
+    url(r'^delprofilepic/',accviews.delprofilepic,name='delprofilepic'),
+    
+    url(r'^shop/',shopviews.shop,name='shop'),
 ]

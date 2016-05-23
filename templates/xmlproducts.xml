@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<django-objects version="1.0">
+	<object model="dataaccess.product" pk="rc-king-mass">
+		<field name="name" type="CharField">RC King Mass</field>
+		<field name="category" rel="ManyToOneRel" to="dataaccess.category">Supplements</field>
+		<field name="price" type="FloatField">36.99</field>
+		<field name="count" type="IntegerField">10</field>
+		<field name="discount" type="FloatField">10.0</field>
+		<field name="details" type="TextField">Flavor Fit For A King! Keeps Your
+			Muscles Fed!</field>
+		<field name="sold" type="IntegerField">0</field>
+		<field name="image" type="CharField">productpic/rc-king-mass.jpg</field>
+	</object>
+	<object model="dataaccess.product" pk="true-grit-protein">
+		<field name="name" type="CharField">True Grit Protein</field>
+		<field name="category" rel="ManyToOneRel" to="dataaccess.category">Supplements</field>
+		<field name="price" type="FloatField">29.99</field>
+		<field name="count" type="IntegerField">5</field>
+		<field name="discount" type="FloatField">5.0</field>
+		<field name="details" type="TextField">Whey Protein Powder To Support Muscle
+			Building. 25g Of Scientifically Dosed Protein To Support Building
+			Muscle.</field>
+		<field name="sold" type="IntegerField">0</field>
+		<field name="image" type="CharField">productpic/true-grit-protein.jpg
+		</field>
+	</object>
+</django-objects>

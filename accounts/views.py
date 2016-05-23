@@ -1,7 +1,5 @@
 import os
 import random
-import urllib
-import urllib2
 
 from django.contrib.auth.hashers import check_password, make_password
 from django.core.mail import send_mail
@@ -10,22 +8,12 @@ from django.http.response import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 
 from getfit import settings
-from logic.parsers import parse_user
+from getfit.views import index
+from utilities.parsers import parse_user
+from utilities.utilities import make_query, dbhost
 
 
 # Create your views here.
-dbhost = "http://127.0.0.1:8081/"
-
-def make_query(url, data):
-    data = urllib.urlencode(data)
-    req = urllib2.Request(url, data)
-    response = urllib2.urlopen(req)
-    response = response.read()
-    return response
-
-def index(request):
-    return render(request, "index.html")
-
 def enter(request):
     return render(request, "enter.html")
 
