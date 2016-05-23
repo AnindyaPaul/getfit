@@ -26,4 +26,12 @@ urlpatterns = [
     url(r'^signup/',views.signup,name='signup'),
     url(r'^signout/',views.signout,name='signout'),
     url(r'^verify/',views.verify,name='verify'),
+    url(r'^forgot/',views.forgot,name='forgot'),
+    url(r'^pwdreset/',views.pwdreset,name='pwdreset'),
+    url(r'^storepwd/',views.storepwd,name='storepwd'),
+    
+    url(r'^profile/',views.profile,name='profile'),
+    url(r'^updprofile/',views.updprofile,name='updprofile'),
+    url(r'^updprofilepic/',views.updprofilepic,name='updprofilepic'),
+    url(r'^delprofilepic/',views.delprofilepic,name='delprofilepic'),
 ]
