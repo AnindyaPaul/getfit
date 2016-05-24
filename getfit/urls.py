@@ -40,4 +40,5 @@ urlpatterns = [
     url(r'^delprofilepic/',accviews.delprofilepic,name='delprofilepic'),
     
     url(r'^shop/',shopviews.shop,name='shop'),
+    url(r'^product/',shopviews.product,name='product'),
 ]

@@ -69,5 +69,40 @@ def parse_products(response):
     
     return lst
 
+def parse_product(response):
+    domTree = xml.dom.minidom.parseString(response)
+    products = domTree.getElementsByTagName("object")
+    
+    cnt = 0
+    dct = dict()
+    for product in products:
+        dct["productid"] = product.getAttribute("pk")
+        fields = product.getElementsByTagName("field")
+        for field in fields:
+            if(field.getAttribute("name") == "name"):
+                if len(field.childNodes) > 0:
+                    dct["name"] = field.childNodes[0].data
+            if(field.getAttribute("name") == "category"):
+                if len(field.childNodes) > 0:
+                    dct["category"] = field.childNodes[0].data
+            if(field.getAttribute("name") == "price"):
+                if len(field.childNodes) > 0:
+                    dct["price"] = field.childNodes[0].data
+            if(field.getAttribute("name") == "count"):
+                if len(field.childNodes) > 0:
+                    cnt = int(field.childNodes[0].data)
+                    dct["count"] = cnt
+            if(field.getAttribute("name") == "discount"):
+                if len(field.childNodes) > 0:
+                    dct["discount"] = field.childNodes[0].data
+            if(field.getAttribute("name") == "details"):
+                if len(field.childNodes) > 0:
+                    dct["details"] = field.childNodes[0].data
+            if(field.getAttribute("name") == "image"):
+                if len(field.childNodes) > 0:
+                    dct["image"] = field.childNodes[0].data
+            if(field.getAttribute("name") == "sold"):
+                if len(field.childNodes) > 0:
+                    dct["sold"] = field.childNodes[0].data
 
-
+    return dct
