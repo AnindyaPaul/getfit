@@ -24,30 +24,20 @@
 						</tr>
 					</thead>
 					<tbody>
+						{% for cart in carts %}
 						<tr>
-							<td>Pro JYM</td>
-							<td>19.99</td>
-							<td>3</td>
-							<td>59.99</td>
+							<td><a href="/product/?productid={{cart.productid}}">{{cart.productname}}</a></td>
+							<td>{{ cart.uprice | floatformat:2 }}</td>
+							<td>{{ cart.count }}</td>
+							<td>{{ cart.tprice | floatformat:2 }}</td>
 						</tr>
-						<tr>
-							<td>Pro JYM</td>
-							<td>19.99</td>
-							<td>3</td>
-							<td>59.99</td>
-						</tr>
-						<tr>
-							<td>Pro JYM</td>
-							<td>19.99</td>
-							<td>3</td>
-							<td>59.99</td>
-						</tr>
-
+						{% endfor %}
+						
 						<tr>
 							<td>Total</td>
 							<td></td>
 							<td></td>
-							<td>179.99</td>
+							<td>{{ total | floatformat:2 }}</td>
 						</tr>
 					</tbody>
 				</table>

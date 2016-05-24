@@ -9,7 +9,7 @@ from django.shortcuts import render
 
 from getfit import settings
 from getfit.views import index
-from utilities.parsers import parse_user
+from utilities.parsers import parse_user, parse_orders
 from utilities.utilities import make_query, dbhost
 
 
@@ -145,8 +145,45 @@ def profile(request):
     
     if picture is None:
         picture = "profilepic/default.jpg"
+    if picture == "None":
+        picture = "profilepic/default.jpg"
     
-    data = { 'username': username, 'email': email, 'picture': picture}
+    data = { 'username': username, 'delivstatus': "Pending"}
+    response = make_query(dbhost + "get_orders/", data)
+    orders = parse_orders(response)
+    
+    pending = list()
+    for order in orders:
+        dct = dict()
+        dct['duedate'] = order['duedate']
+        dct['productid'] = order['productid']
+        dct['count'] = order['count']
+        dct['amount'] = order['amount']
+        dct['paymentmethod'] = order['paymentmethod']
+        dct['paymentinfo'] = order['paymentinfo']
+        dct['contactno'] = order['contactno']
+        dct['address'] = order['address']
+        pending.append(dct)
+    
+    data = { 'username': username, 'delivstatus': "Done"}
+    response = make_query(dbhost + "get_orders/", data)
+    orders = parse_orders(response)
+    
+    history = list()
+    for order in orders:
+        dct = dict()
+        dct['duedate'] = order['duedate']
+        dct['productid'] = order['productid']
+        dct['count'] = order['count']
+        dct['amount'] = order['amount']
+        dct['paymentmethod'] = order['paymentmethod']
+        dct['paymentinfo'] = order['paymentinfo']
+        dct['contactno'] = order['contactno']
+        dct['address'] = order['address']
+        history.append(dct)
+    
+    
+    data = { 'username': username, 'email': email, 'picture': picture, 'pending':pending, 'history':history}
     return render(request, 'profile.html', data)
 
 def updprofile(request):

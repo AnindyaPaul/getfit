@@ -134,6 +134,64 @@ def parse_reviews(response):
     
     return lst
 
+def parse_carts(response):
+    domTree = xml.dom.minidom.parseString(response)
+    carts = domTree.getElementsByTagName("object")
+    
+    lst = list()
+    for cart in carts:
+        dct = dict()
+        dct["cartid"] = cart.getAttribute('pk')
+        fields = cart.getElementsByTagName('field')
+        for field in fields:
+            if(field.getAttribute("name") == "username"):
+                if len(field.childNodes) > 0:
+                    dct["username"] = field.childNodes[0].data
+            if(field.getAttribute("name") == "productid"):
+                if len(field.childNodes) > 0:
+                    dct["productid"] = field.childNodes[0].data
+            if(field.getAttribute("name") == "count"):
+                if len(field.childNodes) > 0:
+                    dct["count"] = field.childNodes[0].data
+        lst.append(dct)
+    return lst
 
-
+def parse_orders(response):
+    domTree = xml.dom.minidom.parseString(response)
+    orders = domTree.getElementsByTagName("object")
+    
+    lst = list()
+    for order in orders:
+        dct = dict()
+        fields = order.getElementsByTagName('field')
+        for field in fields:
+            if(field.getAttribute("name") == "productid"):
+                if len(field.childNodes) > 0:
+                    dct["productid"] = field.childNodes[0].data
+            if(field.getAttribute("name") == "count"):
+                if len(field.childNodes) > 0:
+                    dct["count"] = field.childNodes[0].data
+            if(field.getAttribute("name") == "orderid"):
+                if len(field.childNodes) > 0:
+                    dct["orderid"] = field.childNodes[0].data
+            if(field.getAttribute("name") == "duedate"):
+                if len(field.childNodes) > 0:
+                    dct["duedate"] = field.childNodes[0].data
+            if(field.getAttribute("name") == "contactno"):
+                if len(field.childNodes) > 0:
+                    dct["contactno"] = field.childNodes[0].data
+            if(field.getAttribute("name") == "address"):
+                if len(field.childNodes) > 0:
+                    dct["address"] = field.childNodes[0].data
+            if(field.getAttribute("name") == "amount"):
+                if len(field.childNodes) > 0:
+                    dct["amount"] = field.childNodes[0].data
+            if(field.getAttribute("name") == "paymentmethod"):
+                if len(field.childNodes) > 0:
+                    dct["paymentmethod"] = field.childNodes[0].data
+            if(field.getAttribute("name") == "paymentinfo"):
+                if len(field.childNodes) > 0:
+                    dct["paymentinfo"] = field.childNodes[0].data
+        lst.append(dct)
+    return lst
 

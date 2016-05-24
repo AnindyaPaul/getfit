@@ -44,4 +44,7 @@ urlpatterns = [
     url(r'^add_review/',shopviews.add_review,name='add_review'),
     
     url(r'^cart/',shopviews.cart,name='cart'),
+    url(r'^add_to_cart/',shopviews.add_to_cart,name='add_to_cart'),
+    url(r'^checkout/',shopviews.checkout,name='checkout'),
+    url(r'^place_order/',shopviews.place_order,name='place_order'),
 ]

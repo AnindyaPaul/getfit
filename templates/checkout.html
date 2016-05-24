@@ -2,8 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Get Fit</title>
-	{% include 'includes/header.html' %}
+<title>Get Fit</title> {% include 'includes/header.html' %}
 </head>
 
 
@@ -16,12 +15,15 @@
 			<div class="col-sm-6 col-sm-offset-3">
 				<h2 class="text-center">Finalize order</h2>
 
-				<form method="post" action="/order/"> {% csrf_token %}
+				<form method="post" action="/place_order/">
+					{% csrf_token %}
 					<div class="form-group">
-						<input type="text" name="contactno" class="form-control" id="contactno" placeholder="Enter contact number">
+						<input type="text" name="contactno" class="form-control"
+							id="contactno" placeholder="Enter contact number">
 					</div>
 					<div class="form-group">
-						<input type="text" name="address" class="form-control" id="address" placeholder="Enter delivery address">
+						<input type="text" name="address" class="form-control"
+							id="address" placeholder="Enter delivery address">
 					</div>
 
 					<div class="form-group">
@@ -29,25 +31,31 @@
 
 
 						<div class="radio">
-							<label>
-								<input type="radio" name="optradio" value="cashOnDelivery" onclick="handleClick(this);" checked="checked">Cash on delivery
+							<label> <input type="radio" name="optradio"
+								value="cashOnDelivery" onclick="handleClick(this);"
+								checked="checked">Cash on delivery
 							</label>
 						</div>
 						<div class="radio">
-							<label>
-								<input type="radio" name="optradio" value="creditCard" onclick="handleClick(this);">Credit card</label>
+							<label> <input type="radio" name="optradio"
+								value="creditCard" onclick="handleClick(this);">Credit
+								card
+							</label>
 						</div>
 						<div class="radio">
-							<label>
-								<input type="radio" name="optradio" value="bKash" onclick="handleClick(this);">bKash</label>
+							<label> <input type="radio" name="optradio" value="bKash"
+								onclick="handleClick(this);">bKash
+							</label>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<input type="text" class="form-control" id="paymentInfo" disabled="true">
+						<input type="text" class="form-control" id="paymentInfo"
+							name="paymentinfo">
 					</div>
 
-					<button type="submit" class="btn btn-default btn-block">Place order</button>
+					<button type="submit" class="btn btn-default btn-block">Place
+						order</button>
 				</form>
 			</div>
 		</div>
@@ -67,22 +75,14 @@
 		curVal = myRadio.value;
 
 		if (curVal == "creditCard") {
-			//elem.innerHTML = "Credit card";
-			elem.removeAttribute("disabled");
 			elem.placeholder = "Enter credit card number";
-			elem.name = "creditCardNo";
 
 		} else if (curVal == "bKash") {
-			//elem.innerHTML = "bkash";
-			elem.removeAttribute("disabled");
 			elem.placeholder = "Enter bKash token";
-			elem.name = "bKashNo";
 		} else {
-			elem.setAttribute("disabled", true);
-			elem.placeholder = "";
+			elem.placeholder = "No need to enter anything";
 		}
 	}
-
 </script>
 
 </html>

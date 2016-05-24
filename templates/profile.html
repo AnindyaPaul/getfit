@@ -73,25 +73,33 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th>Order ID</th>
-							<th>Amount</th>
 							<th>Due date</th>
+							<th>Product ID</th>
+							<th>Quantity</th>
+							<th>Price</th>
+							<th>Payment Method</th>
+							<th>Payment Info</th>
+							<th>Contact</th>
+							<th>Address</th>
+							
 							<th>Cancel?</th>
 						</tr>
 					</thead>
 					<tbody>
+						{% for order in pending %}
 						<tr>
-							<td>545</td>
-							<td>599.99</td>
-							<td>12/5/2016</td>
+							<td>{{order.duedate}}</td>
+							<td>{{order.productid}}</td>
+							<td>{{order.count}}</td>
+							<td>{{order.amount}}</td>
+							<td>{{order.paymentmethod}}</td>
+							<td>{{order.paymentinfo}}</td>
+							<td>{{order.contactno}}</td>
+							<td>{{order.address}}</td>
+							
 							<td><a class="cancel" href=#><span class="fa fa-close"></span></a></td>
 						</tr>
-						<tr>
-							<td>545</td>
-							<td>599.99</td>
-							<td>12/5/2016</td>
-							<td><a class="cancel" href=#><span class="fa fa-close"></span></a></td>
-						</tr>
+						{% endfor %}
 					</tbody>
 				</table>
 			</div>
@@ -109,22 +117,31 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th>Order ID</th>
-							<th>Amount</th>
 							<th>Due date</th>
+							<th>Product ID</th>
+							<th>Quantity</th>
+							<th>Price</th>
+							<th>Payment Method</th>
+							<th>Payment Info</th>
+							<th>Contact</th>
+							<th>Address</th>
+							
 						</tr>
 					</thead>
 					<tbody>
+						{% for order in history %}
 						<tr>
-							<td>545</td>
-							<td>599.99</td>
-							<td>12/5/2016</td>
+							<td>{{order.duedate}}</td>
+							<td>{{order.productid}}</td>
+							<td>{{order.count}}</td>
+							<td>{{order.amount}}</td>
+							<td>{{order.paymentmethod}}</td>
+							<td>{{order.paymentinfo}}</td>
+							<td>{{order.contactno}}</td>
+							<td>{{order.address}}</td>
+							
 						</tr>
-						<tr>
-							<td>545</td>
-							<td>599.99</td>
-							<td>12/5/2016</td>
-						</tr>
+						{% endfor %}
 					</tbody>
 				</table>
 			</div>
