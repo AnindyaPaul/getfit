@@ -8,11 +8,13 @@ from django.http.response import HttpResponse
 # Create your views here.
 def shop(request):
     
+    category = None
     products = list()
     if 'category' in request.GET:
         data = { 'category': request.GET['category'] }
         products = make_query(dbhost + "get_products_by_category/", data)
         products = parse_products(products)
+        category = request.GET['category']
     else:
         data = dict()
         products = make_query(dbhost + "get_products/", data)
@@ -34,4 +36,11 @@ def shop(request):
         cnt += 1
     #return HttpResponse(cnt)
     
-    return render(request, "shop.html", { 'products': data })
+    if category is None:
+        return render(request, "shop.html", { 'products': data })
+    else:
+        return render(request, "shop.html", { 'products': data, 'category': category })
+
+
+
+

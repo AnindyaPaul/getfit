@@ -13,12 +13,13 @@
 	{% include 'includes/navbar.html' %}
 
 	<div class="container">
-
+		{% if category %}
 		<div class="row cat-header">
 			<div class="col-md-6">
-				<h3>Category <span class="fa fa-angle-right"></span> Supplements</h3>
+				<h3>Category <span class="fa fa-angle-right"></span> {{ category }}</h3>
 			</div>
 		</div>
+		{% endif %}
 
 		<div class="row product-row">
 			{% for product in products %}
