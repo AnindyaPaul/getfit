@@ -106,3 +106,34 @@ def parse_product(response):
                     dct["sold"] = field.childNodes[0].data
 
     return dct
+
+def parse_reviews(response):
+    domTree = xml.dom.minidom.parseString(response)
+    reviews = domTree.getElementsByTagName("object")
+    
+    lst = list()
+    for review in reviews:
+        dct = dict()
+        dct["reviewid"] = review.getAttribute("pk")
+        fields = review.getElementsByTagName("field")
+        for field in fields:
+            if(field.getAttribute("name") == "username"):
+                if len(field.childNodes) > 0:
+                    dct["username"] = field.childNodes[0].data
+            if(field.getAttribute("name") == "productid"):
+                if len(field.childNodes) > 0:
+                    dct["productid"] = field.childNodes[0].data
+            if(field.getAttribute("name") == "details"):
+                if len(field.childNodes) > 0:
+                    dct["details"] = field.childNodes[0].data
+            if(field.getAttribute("name") == "rating"):
+                if len(field.childNodes) > 0:
+                    dct["rating"] = field.childNodes[0].data
+            
+        lst.append(dct)
+    
+    return lst
+
+
+
+

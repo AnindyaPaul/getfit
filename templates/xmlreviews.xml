@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<django-objects version="1.0">
+	<object model="dataaccess.review" pk="6">
+		<field name="username" rel="ManyToOneRel" to="dataaccess.userprofile">anindya</field>
+		<field name="productid" rel="ManyToOneRel" to="dataaccess.product">logo-t-shirt</field>
+		<field name="rating" type="IntegerField">9</field>
+		<field name="details" type="TextField">Really nice product!</field>
+	</object>
+	<object model="dataaccess.review" pk="7">
+		<field name="username" rel="ManyToOneRel" to="dataaccess.userprofile">zahin</field>
+		<field name="productid" rel="ManyToOneRel" to="dataaccess.product">logo-t-shirt</field>
+		<field name="rating" type="IntegerField">10</field>
+		<field name="details" type="TextField">Love it!</field>
+	</object>
+</django-objects>

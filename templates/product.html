@@ -17,20 +17,20 @@
 			<div class="well">
 				<div class="row">
 					<div class="col-md-5">
-						<img class="img-responsive" src="../static/img/product.jpg">
+						<img class="img-responsive" src="../media/{{ product.image }}">
 					</div>
 					<div class="col-md-7">
 						<div class="row prod-header">
 							<div class="col-md-8">
-								<h3>Pre JYM</h3>
-								<h4 style="color: red">Price: $19.99</h4>
+								<h3>{{ product.name }}</h3>
+								<h4><span style="color: red">Price: ${{ product.discprice | floatformat:2}}</span>{% if product.origprice %} <s>${{ product.origprice | floatformat:2}}</s>{% endif %}</h4>
 							</div>
 							<div class="col-md-4 text-right rating">
-								<h3>9.2</h3>
+								<h3>{{ product.rating }}</h3>
 								<p>Rating</p>
 							</div>
 						</div>
-						<p class="text-justify">Pre-Workout Powder Powerhouse. Scientifically Advanced All-In-One Formula for Improved Workouts Pre-Workout Powder Powerhouse. Scientifically Advanced All-In-One Formula for Improved Workouts</p>
+						<p class="text-justify">{{ product.details }}</p>
 
 						<div class="row qty-form">
 							<form method="post" action="/add_to_cart/"> {% csrf_token %}
@@ -49,7 +49,14 @@
 
 			<div class="well">
 				<div class="row">
-					<form class="form-horizontal" id="review-form" method="post" action="/post_review/"> {% csrf_token %}
+					{% if request.session.username %}
+					<form class="form-horizontal" id="review-form" method="post" action="/add_review/"> {% csrf_token %}
+						<div class="form-group">
+							<input type="hidden" name="username" value="{{ request.session.username }}">
+						</div>
+						<div class="form-group">
+							<input type="hidden" name="productid" value="{{ product.productid }}">
+						</div>
 						<div class="form-group">
 							<label for="input-rating" class="col-sm-2 control-label">Rating</label>
 							<div class="col-sm-10">
@@ -59,7 +66,7 @@
 						<div class="form-group">
 							<label for="input-review" class="col-sm-2 control-label">Review</label>
 							<div class="col-sm-10">
-								<textarea rows="3" class="form-control" id="input-review" placeholder="Write a review about the product" form="review-form" name="review"></textarea>
+								<textarea rows="3" class="form-control" id="input-review" placeholder="Write a review about the product" form="review-form" name="details"></textarea>
 							</div>
 						</div>
 						<div class="form-group">
@@ -68,6 +75,9 @@
 							</div>
 						</div>
 					</form>
+					{% else %}
+					<h3 class="text-center"><a href="/enter">Sign in</a> to write a review.</h3>
+					{% endif %}
 				</div>
 			</div>
 
@@ -76,39 +86,26 @@
 				<h4 class="text-center">Reviews</h4>
 			</div>
 
+			{% for review in reviews %}
 			<div class="well">
 				<div class="row">
 					<div class="col-md-2">
 						<div class="row">
-							<img class="img-responsive img-circle" src="../static/img/user1.jpg">
+							<img class="img-responsive img-circle" src="../media/{{ review.image }}">
 						</div>
 						<div class="row">
-							<h4 class="text-center">Anindya Paul</h4>
+							<h4 class="text-center">{{ review.username }}</h4>
 						</div>
 					</div>
 					<div class="col-md-10">
-						<h4>Rated: 9 <span class="rating">(out of 10)</span></h4>
-						<p class="text-justify">Love this stuff, it provides a great energy and focus boost. quick word of warning don't take 6 hours before bed it will keep you awake, ideal for morning workouts though and does exactly what it says on the tub.</p>
+						<h4>Rated: {{ review.rating | floatformat:2 }} <span class="rating">(out of 10)</span></h4>
+						<p class="text-justify">{{ review.details }}</p>
 					</div>
 				</div>
 			</div>
+			
+			{% endfor %}
 
-			<div class="well">
-				<div class="row">
-					<div class="col-md-2">
-						<div class="row">
-							<img class="img-responsive img-circle" src="../static/img/user2.jpg">
-						</div>
-						<div class="row">
-							<h4 class="text-center">Zahin Jawad</h4>
-						</div>
-					</div>
-					<div class="col-md-10">
-						<h4>Rated: 9 <span class="rating">(out of 10)</span></h4>
-						<p class="text-justify">The perfect blend of ingredients at the proper doses. It does everything I want a pre-workout to do, and the ingredient list is completely disclosed. I won't even buy a proprietary blend if it was half off anymore.</p>
-					</div>
-				</div>
-			</div>
 		</div>
 
 

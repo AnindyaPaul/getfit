@@ -29,11 +29,11 @@
 						<img class="img-responsive" src="../media/{{ product.image }}">
 						<div class="caption">
 							<h3>{{ product.name }}</h3>
-							<h4>Price: <span style="color: red">${{ product.discprice | floatformat:2 }}</span> <s>${{ product.origprice | floatformat:2}}</s></h4>
+							<h4>Price: <span style="color: red">${{ product.discprice | floatformat:2 }}</span>{% if product.origprice %} <s>${{ product.origprice | floatformat:2}}</s>{% endif %}</h4>
 							<p class="prod-sum">{{ product.details }}</p>
 							<p>
 								<a href="/product?productid={{ product.productid }}#reviews" class="btn btn-default rating-btn" role="button">9.2/10</a>
-								<a href="#" class="btn btn-cart shop-prod-btn" role="button"><span class="fa fa-cart-plus"></span> Add to cart</a>
+								<a href="/product?productid={{ product.productid }}" class="btn btn-cart shop-prod-btn" role="button"><span class="fa fa-cart-plus"></span> Add to cart</a>
 							</p>
 						</div>
 					</div>
