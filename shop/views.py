@@ -60,7 +60,7 @@ def product(request):
         dct["image"] = product["image"]
         dct["rating"] = 9.3
 
-        return render(request,"product.html",dct)
+        return render(request,"product.html", { 'product': dct })
     
     else:
         return HttpResponseRedirect(reverse(shop))
