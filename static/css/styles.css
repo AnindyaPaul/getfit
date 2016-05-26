@@ -61,6 +61,11 @@ p {
 
 .thumbnail {
 	box-shadow: 1px 1px 10px #AAAAAA;
+	height: 620px;
+}
+
+.thumb-img {
+	max-height: 350px;
 }
 
 .thumbnail a {

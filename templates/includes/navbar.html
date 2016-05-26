@@ -5,7 +5,7 @@
 			</div>
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<form class="navbar-form" role="search" method="post" action="/search/"> {% csrf_token %}
+					<form class="navbar-form" role="search" method="get" action="/shop/">
 						<div class="form-group">
 							<input type="text" class="form-control text-right" placeholder="Enter query and hit search!" name="query" id="search-form-query">
 						</div>

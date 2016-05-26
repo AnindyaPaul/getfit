@@ -11,6 +11,7 @@ from datetime import datetime, timedelta
 # Create your views here.
 def shop(request):
     
+    query = None
     category = None
     products = list()
     if 'category' in request.GET:
@@ -18,6 +19,11 @@ def shop(request):
         products = make_query(dbhost + "get_products_by_category/", data)
         products = parse_products(products)
         category = request.GET['category']
+    elif 'query' in request.GET:
+        data = { 'query': request.GET['query'] }
+        products = make_query(dbhost + "get_products_by_query/", data)
+        products = parse_products(products)
+        query = request.GET['query']
     else:
         data = dict()
         products = make_query(dbhost + "get_products/", data)
@@ -53,8 +59,10 @@ def shop(request):
         cnt += 1
     #return HttpResponse(cnt)
     
-    if category is None:
+    if category is None and query is None:
         return render(request, "shop.html", { 'products': data })
+    elif category is None and query is not None:
+        return render(request, "shop.html", { 'products': data, 'query': query })
     else:
         return render(request, "shop.html", { 'products': data, 'category': category })
 
@@ -164,6 +172,13 @@ def add_to_cart(request):
     data = { 'username':username, 'productid':productid, 'count':count }
     response = make_query(dbhost + "set_cart/", data)
     return HttpResponseRedirect("/product/?productid=" + request.POST['productid'])
+
+def del_from_cart(request):
+    productid = request.POST.get('productid')
+    username = request.POST.get('username')
+    
+    response = make_query(dbhost + 'del_cart/', { 'productid': productid, 'username': username })
+    return HttpResponseRedirect(reverse(cart))
 
 def checkout(request):
     return render(request, 'checkout.html')

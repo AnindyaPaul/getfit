@@ -45,6 +45,7 @@ urlpatterns = [
     
     url(r'^cart/',shopviews.cart,name='cart'),
     url(r'^add_to_cart/',shopviews.add_to_cart,name='add_to_cart'),
+    url(r'^del_from_cart/',shopviews.del_from_cart,name='del_from_cart'),
     url(r'^checkout/',shopviews.checkout,name='checkout'),
     url(r'^place_order/',shopviews.place_order,name='place_order'),
 ]

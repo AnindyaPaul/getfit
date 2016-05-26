@@ -2,8 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Get Fit</title>
-	{% include 'includes/header.html' %}
+<title>Get Fit</title> {% include 'includes/header.html' %}
 </head>
 
 
@@ -30,9 +29,21 @@
 							<td>{{ cart.uprice | floatformat:2 }}</td>
 							<td>{{ cart.count }}</td>
 							<td>{{ cart.tprice | floatformat:2 }}</td>
+							<td>
+								<form method="post" action="/del_from_cart/">
+									{% csrf_token %}
+									<div class="form-group">
+										<input type="hidden" name="username" value="{{ request.session.username }}">
+									</div>
+									<div class="form-group">
+										<input type="hidden" name="productid" value="{{ cart.productid }}">
+									</div>
+									<button type="submit" class="btn btn-default"><span class="fa fa-close"></span></button>
+								</form>
+							</td>
 						</tr>
 						{% endfor %}
-						
+
 						<tr>
 							<td>Total</td>
 							<td></td>
@@ -43,9 +54,8 @@
 				</table>
 
 				<div class="row btn-chk-out">
-					<a href="/checkout" class="btn btn-default btn-block">
-						Check out
-					</a>
+					<a href="/checkout" class="btn btn-default btn-block"> Check
+						out </a>
 				</div>
 			</div>
 		</div>
