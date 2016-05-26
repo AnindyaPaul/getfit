@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Getfit by AnindyaPaul</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Getfit</h1>
+        <p>Buy fitness products.</p>
+
+        <p class="view"><a href="https://github.com/AnindyaPaul/getfit">View the Project on GitHub <small>AnindyaPaul/getfit</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/AnindyaPaul/getfit/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/AnindyaPaul/getfit/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/AnindyaPaul/getfit">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>GetFit is an online shop where you can buy fitness products like apparels, accessories and supplements - all by ordering from your home. It is the result of an educational effort to learn and implement different aspects of web engineering. The main goal in this project was to implement 3-tier architecture rather than focusing on features.</p>
+
+<h2>
+<a id="screenshots" class="anchor" href="#screenshots" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Screenshots</h2>
+
+<p><img src="http://i.imgur.com/visSMg5.png" alt="Shop">
+<img src="http://i.imgur.com/nAbUGfC.png" alt="Enter">
+<img src="http://i.imgur.com/eAutFrb.png" alt="Profile">
+<img src="http://i.imgur.com/6JbeRBV.png" alt="Cart">
+<img src="http://i.imgur.com/YWgee6Y.png" alt="Checkout"></p>
+
+<h2>
+<a id="3-tier-architecture" class="anchor" href="#3-tier-architecture" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3-tier architecture</h2>
+
+<p>Being a project of the web engineering course project, our main goal was to focus on building the platform following the 3-tier architecture. So we didn't implement many features. Rather our application has a true 3-tier design. Here's an overview of the 3-tier architecture.</p>
+
+<pre><code>Presentation Layer &lt;---&gt; Logic Layer &lt;---&gt; Data Access Layer &lt;---&gt; Database
+</code></pre>
+
+<p>So the philosophy is that the presentation layer only knows about the logic layer and has no idea about the database. The logic layer accepts requests from the user. It then decides what information is needed to serve the user. Based on that, it queries all the data from the data access layer. The data access layer communicates directly with the database. So the user never knows where the database is. The logic layer can be in one server, data access layer in another, database in another. </p>
+
+<h2>
+<a id="implementation" class="anchor" href="#implementation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Implementation</h2>
+
+<p>The web application is built using the <a href="https://www.djangoproject.com/">pythong django framework</a>. However the django framework by default is only an MVC framework. Our main goal was to implement 3-tier architecture. So we had come up with some creative ideas.</p>
+
+<p>We created two django projects. One for the logic layer, another for the data access layer. The logic layer receives requests. It has no models. All the models reside in the data access layer. The database is created accordingly. The two servers are configured in apache. We have two sites enabled at two different ports. The two ports serve the two applications.</p>
+
+<p>The logic layer makes http request to the data access layer via the post method. Data access layer extracts the query and then retrieves data from database, converts the data into an xml file and sends the data back to the logic layer via http response. The logic layer parses the data and generates page for the user.</p>
+
+<p>Since the layers communicate using the http request and response and the data is transferred in xml format, the two servers are actually language and platform independent. We can implement the data access layer in another language if we want. The server just needs to accept http request and send back http response according to the query. The platform doesn't matter here.</p>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>3 Tier architecture</li>
+<li>Language independent layers</li>
+<li>Data transfer in xml format</li>
+<li>Password stored by hashing</li>
+<li>Email verification enabled</li>
+</ul>
+
+<h2>
+<a id="conclusion" class="anchor" href="#conclusion" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Conclusion</h2>
+
+<p>It is by no means a complete project. There are lots of bugs and the project is incomplete in many different ways. However the main purpose of implementing a 3-tier architecture was carried out properly.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/AnindyaPaul">AnindyaPaul</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
