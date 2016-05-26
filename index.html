@@ -44,7 +44,7 @@
 
 <p>Being a project of the web engineering course project, our main goal was to focus on building the platform following the 3-tier architecture. So we didn't implement many features. Rather our application has a true 3-tier design. Here's an overview of the 3-tier architecture.</p>
 
-<pre><code>Presentation Layer &lt;---&gt; Logic Layer &lt;---&gt; Data Access Layer &lt;---&gt; Database
+<pre><code>Presentation Layer &lt;&gt; Logic Layer &lt;&gt; Data Access Layer &lt;&gt; Database
 </code></pre>
 
 <p>So the philosophy is that the presentation layer only knows about the logic layer and has no idea about the database. The logic layer accepts requests from the user. It then decides what information is needed to serve the user. Based on that, it queries all the data from the data access layer. The data access layer communicates directly with the database. So the user never knows where the database is. The logic layer can be in one server, data access layer in another, database in another. </p>
@@ -52,7 +52,7 @@
 <h2>
 <a id="implementation" class="anchor" href="#implementation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Implementation</h2>
 
-<p>The web application is built using the <a href="https://www.djangoproject.com/">pythong django framework</a>. However the django framework by default is only an MVC framework. Our main goal was to implement 3-tier architecture. So we had come up with some creative ideas.</p>
+<p>The web application is built using the <a href="https://www.djangoproject.com/">python django framework</a>. However the django framework by default is only an MVC framework. Our main goal was to implement 3-tier architecture. So we had come up with some creative ideas.</p>
 
 <p>We created two django projects. One for the logic layer, another for the data access layer. The logic layer receives requests. It has no models. All the models reside in the data access layer. The database is created accordingly. The two servers are configured in apache. We have two sites enabled at two different ports. The two ports serve the two applications.</p>
 
