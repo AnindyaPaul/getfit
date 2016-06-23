@@ -160,7 +160,8 @@ def profile(request):
         dct['count'] = order['count']
         dct['amount'] = order['amount']
         dct['paymentmethod'] = order['paymentmethod']
-        dct['paymentinfo'] = order['paymentinfo']
+        if 'paymentinfo' in order:
+            dct['paymentinfo'] = order['paymentinfo']
         dct['contactno'] = order['contactno']
         dct['address'] = order['address']
         pending.append(dct)
@@ -177,7 +178,8 @@ def profile(request):
         dct['count'] = order['count']
         dct['amount'] = order['amount']
         dct['paymentmethod'] = order['paymentmethod']
-        dct['paymentinfo'] = order['paymentinfo']
+        if 'paymentinfo' in order:
+            dct['paymentinfo'] = order['paymentinfo']
         dct['contactno'] = order['contactno']
         dct['address'] = order['address']
         history.append(dct)
